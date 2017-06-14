@@ -1,15 +1,10 @@
-hackmdPostgres:
-  image: postgres
-  environment:
-    - POSTGRES_USER=hackmd
-    - POSTGRES_PASSWORD=hackmdpass
-    - POSTGRES_DB=hackmd
 hackmd:
-  image: hackmdio/hackmd:latest
-  environment:
-    - POSTGRES_USER=hackmd
-    - POSTGRES_PASSWORD=hackmdpass
-  links:
-    - hackmdPostgres:hackmdPostgres
+  build: hackmd
+  #environment:
+  #  - POSTGRES_USER=hackmd
+  #  - POSTGRES_PASSWORD=hackmdpass
+  volumes:
+    - ./data/uploads:/hackmd/public/uploads
+    - ./data/db:/hackmd/db
   ports:
-    - "3000:3000"
+    - "9999:3000"
