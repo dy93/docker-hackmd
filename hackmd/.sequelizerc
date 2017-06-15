@@ -4,7 +4,6 @@ module.exports = {
     'config':          path.resolve('config.json'),
     'migrations-path': path.resolve('lib', 'migrations'),
     'models-path':     path.resolve('lib', 'models'),
-    'url':             'change this',
     "dialect": "sqlite",
     "storage": "./db/db.hackmd.sqlite"
 }

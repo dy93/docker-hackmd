@@ -3,12 +3,13 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y git build-essential sqlite3
 
 # source
+ADD https://raw.githubusercontent.com/dy93/hackmd/master/package.json /tmp/package.json
+RUN cd /tmp && npm install
+
 RUN mkdir /hackmd
 WORKDIR /hackmd
 RUN git clone https://github.com/dy93/hackmd.git /hackmd
-
-# npm, deps
-RUN npm install
+RUN mv /tmp/node_modules /hackmd
 
 # add config
 ADD config.json /hackmd/config.json
